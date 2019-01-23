@@ -66,10 +66,167 @@ public class ISoccer {
                     manageResources();
                     break;
                 case 3:
+                    managePartners();
+                    break;
+                case 4:
+                    reports();
                     break;
             }
             
         }
+        
+    }
+    
+    public static void reports(){
+        int menuOpt;
+        String saux;
+        
+        showReportsMenu();
+        menuOpt = readNumber();
+        saux = read.nextLine();
+        
+        switch(menuOpt){
+            case 1:
+                employeesReport();
+                verifyAvailability();
+                System.out.println("[!] Número de sócios: "+partners.size());
+                listPartners();
+                break;
+            case 2:
+                employeesReport();
+                break;
+            case 3:
+                verifyAvailability();
+                break;
+            case 4:
+                System.out.println("[!] Número de sócios: "+partners.size());
+                listPartners();
+                break;
+        }
+        
+    }
+    
+    public static void employeesReport(){
+                System.out.println("[!] Número total de funcionários: "+allEmployees.size());
+                System.out.println("[!] -> Técnico:");
+                System.out.println("");
+                System.out.println("        [!] Nome: "+mainCoach.getName()+" [!] Email: "+mainCoach.getEmail());
+                System.out.println("        [!] Salário: "+mainCoach.getSalary()+" [!] Telefone: "+mainCoach.getPhone());
+                System.out.println("[!] -> Jogadores:");
+                System.out.println("");
+                listPlayers();
+                System.out.println("[!] Número de funcionários de serviços gerais: "+generalServices.size());
+                listEmployees();
+    }
+    
+    public static void managePartners(){
+        int menuOpt;
+        String saux;
+        
+        showManagePartnersMenu();
+        menuOpt = readNumber();
+        saux = read.nextLine();
+        
+        switch(menuOpt){
+            case 1:
+                addPartner();
+                break;
+            case 2:
+                searchPartner();
+                break;
+            case 3:
+                changeCompliance();
+                break;
+            default:
+                System.out.println("[!] ERRO: Número de opção incorreto");
+                break;
+        }
+    }
+    
+    public static void changeCompliance(){
+        String name;
+        System.out.println("[+] Digite o nome do sócio-torcedor:");
+        name = read.nextLine();
+        Partner foundPartner = findPartner(name);
+        
+        if(foundPartner!=null){
+            if(foundPartner.isCompliance()){
+                foundPartner.setCompliance(false);
+                System.out.println("[!] Status de adimplência alterado para INADIMPLENTE!");
+            }else{
+                foundPartner.setCompliance(true);
+                System.out.println("[!] Status de adimplência alterado para ADIMPLENTE!");
+            }
+        }else{
+            System.out.println("[!] ERRO: Sócio-torcedor não encontrado!");
+        }
+    }
+    
+    public static void searchPartner(){
+        String name;
+        System.out.println("[+] Digite o nome do sócio-torcedor:");
+        name = read.nextLine();
+        Partner foundPartner = findPartner(name);
+        
+        if(foundPartner!=null){
+            System.out.println("        [!] Nome: " + foundPartner.getName());
+            System.out.println("        [!] Email: "+ foundPartner.getEmail()+" [!] CPF: "+foundPartner.getCpf());
+            System.out.println("        [!] Telefone: "+foundPartner.getPhone()+" [!] Contribuição: "+foundPartner.getContribution());
+            
+            if(foundPartner.isCompliance()){
+                System.out.println("        [!] Adimplência: Adimplente");
+            }else{
+                System.out.println("        [!] Adimplência: Inadimplente");
+            }
+            
+            switch(foundPartner.getType()){
+                case 1:
+                    System.out.println("        [!] Tipo: Júnior");
+                    break;
+                case 2:
+                    System.out.println("        [!] Tipo: Sênior");
+                    break;
+                case 3:
+                    System.out.println("        [!] Tipo: Elite");
+                break;
+            }
+            
+        }else{
+            System.out.println("[!] ERRO: Sócio-torcedor não encontrado!");
+        }
+    }
+    
+    public static void addPartner(){
+        String name;
+        String email;
+        String cpf;
+        int phone;
+        float contrib;
+        int type;
+        String saux;
+        
+        System.out.println("[+] Digite o nome do sócio-torceodor:");
+        name = read.nextLine();
+        System.out.println("[+] Digite o email do sócio-torcedor:");
+        email = read.nextLine();
+        System.out.println("[+] Digite o CPF do sócio-torcedor:");
+        cpf = read.nextLine();
+        System.out.println("[+] Digite o telefone do sócio-torcedor: (SOMENTE NÚMEROS)");
+        phone = readNumber();
+        saux = read.nextLine();
+        System.out.println("[+] Digite o valor da contribuição do sócio-torcedor: (REAL) (Formato: XX,X)");
+        contrib = readFloat();
+        saux = read.nextLine();
+        System.out.println("[+] Digite o NÚMERO correspondente ao tipo de sócio-torcedor:");
+        System.out.printf("     [1] Júnior\n     [2] Sênior\n     [3] Elite\n");
+        type = readNumber();
+        saux = read.nextLine();
+        
+        Partner newPartner = new Partner(name,email,cpf,phone,contrib,type);
+        
+        partners.add(newPartner);
+        
+        System.out.println("[!] Novo sócio-torcedor registrado!");
         
     }
     
@@ -103,7 +260,82 @@ public class ISoccer {
             case 7:
                 increaseBathrooms();
                 break;
+            case 8:
+                changeAvailability();
+                
         }
+    }
+    
+    public static void changeAvailability(){
+        int menuOpt; 
+        String saux;
+        int code;
+       
+        System.out.println("[+] Digite o NÚMERO correspondente ao tipo de recurso que deseja alterar a disponibilidade:");
+        System.out.printf("    [1] Estádio\n    [2] Ônibus\n    [3] Centro de Treinamentos\n");
+        menuOpt = readNumber();
+        saux = read.nextLine();
+        
+        switch(menuOpt){
+            case 1:
+                System.out.println("[+] Digite o nome do estádio:");
+                saux = read.nextLine();
+                Stadium foundStadium = findStadium(saux);
+                
+                if(foundStadium != null){
+                    if(foundStadium.isAvailable()){
+                        foundStadium.setAvailable(false);
+                        System.out.println("[!] Disponibilidade do estádio alterada para NÃO DISPONÍVEL!");
+                    }else{
+                        foundStadium.setAvailable(true);
+                        System.out.println("[!] Disponibilidade do estádio alterada para DISPONÍVEL!");
+                    }
+                }else{
+                    System.out.println("[!] ERRO: Estádio não encontrado!");
+                }
+                break;
+            case 2:
+                System.out.println("[+] Digite o código do ônibus:");
+                code = readNumber();
+                saux = read.nextLine();
+                Bus foundBus = findBus(code);
+                
+                if(foundBus != null){
+                    if(foundBus.isAvailable()){
+                        foundBus.setAvailable(false);
+                        System.out.println("[!] Disponibilidade do ônibus alterada para NÃO DISPONÍVEL!");
+                    }else{
+                        foundBus.setAvailable(true);
+                        System.out.println("[!] Disponibilidade do ônibus alterada para DISPONÍVEL!");
+                    }
+                }else{
+                    System.out.println("[!] ERRO: Ônibus não encontrado!");
+                }
+                break;
+            case 3:
+                System.out.println("[+] Digite o código do centro de treinamentos:");
+                code = readNumber();
+                saux = read.nextLine();
+                TrainingCenter foundTrainingCenter = findTrainingCenter(code);
+                
+                if(foundTrainingCenter != null){
+                    if(foundTrainingCenter.isAvailable()){
+                        foundTrainingCenter.setAvailable(false);
+                        System.out.println("[!] Disponibilidade do centro de treinamento alterada para NÃO DISPONÍVEL!");
+                    }else{
+                        foundTrainingCenter.setAvailable(true);
+                        System.out.println("[!] Disponibilidade do centro de treinamento alterada para DISPONÍVEL!");
+                    }
+                }else{
+                    System.out.println("[!] ERRO: centro de treinamento não encontrado!");
+                }
+                break;
+            default:
+                System.out.println("[!] ERRO: Opção não disponível!");
+        }
+        
+        
+        
     }
     
     public static void increaseBathrooms(){
@@ -168,9 +400,40 @@ public class ISoccer {
     }
     
     public static void verifyAvailability(){
+        System.out.println("[!] Ônibus ("+buses.size()+"):");
         listBuses();
+        System.out.println("[!] Centros de Treinamento: ("+trainingCenters.size()+"):");
         listTrainingCenters();
+        System.out.println("[!] Estádios ("+stadiums.size()+"):");
         listStadiums();
+    }
+    
+    public static void listEmployees(){
+        Employee st;
+        for (Iterator<Employee> it = generalServices.iterator(); it.hasNext();){
+            st = it.next();
+            
+            System.out.println("        [!] Nome: "+st.getName());
+            System.out.println("        [!] Email: "+st.getEmail());
+            System.out.println("        [!] CPF: "+st.getCpf()+" Telefone: "+st.getPhone());
+            System.out.println("        [!] Salário: "+st.getSalary());
+            System.out.println("        [!] Função: "+st.getFunction());
+            System.out.println("");
+        }
+    }
+    
+    public static void listPlayers(){
+        Player st;
+        for (Iterator<Player> it = players.iterator(); it.hasNext();){
+            st = it.next();
+            
+            System.out.println("        [!] Nome: "+st.getName());
+            System.out.println("        [!] Email: "+st.getEmail());
+            System.out.println("        [!] CPF: "+st.getCpf()+" Telefone: "+st.getPhone());
+            System.out.println("        [!] Salário: "+st.getSalary());
+            System.out.println("        [!] Posição: "+st.getPosition()+" [!] Apto a jogar: "+st.isHealthy());
+            System.out.println("");
+        }
     }
     
     public static void listBuses(){
@@ -183,6 +446,7 @@ public class ISoccer {
             }else{
                 System.out.println("           [!] Código: "+st.getCode() + " Item: Ônibus  Disponibilidade: Não disponível");
             }
+            System.out.println("");
         }
     }
     
@@ -197,6 +461,7 @@ public class ISoccer {
                 System.out.println("           [!] Código: "+ct.getCode() + " Item: Centro de Treinamento  Disponibilidade: Não disponível");
             }
             System.out.println("                    Número de Dormitórios: "+ct.getBedrooms());
+            System.out.println("");
         }
     }
     
@@ -212,6 +477,37 @@ public class ISoccer {
             }
             System.out.println("                    Número de Banheiros: "+es.getBathrooms()+" Número de Lanchonetes: "+es.getSnackBars());
             System.out.println("                        Capacidade: "+es.getCapacity());
+            System.out.println("");
+        }
+    }
+    
+    public static void listPartners(){
+        Partner ct;
+        for (Iterator<Partner> it = partners.iterator(); it.hasNext();) {
+            ct = it.next();
+            
+            System.out.println("        [!] Nome: " + ct.getName());
+            System.out.println("        [!] Email: "+ ct.getEmail()+" [!] CPF: "+ct.getCpf());
+            System.out.println("        [!] Telefone: "+ct.getPhone()+" [!] Contribuição: "+ct.getContribution());
+            
+            if(ct.isCompliance()){
+                System.out.println("        [!] Adimplência: Adimplente");
+            }else{
+                System.out.println("        [!] Adimplência: Inadimplente");
+            }
+            
+            switch(ct.getType()){
+                case 1:
+                    System.out.println("        [!] Tipo: Júnior");
+                    break;
+                case 2:
+                    System.out.println("        [!] Tipo: Sênior");
+                    break;
+                case 3:
+                    System.out.println("        [!] Tipo: Elite");
+                break;
+            }
+            System.out.println("");
         }
     }
     
@@ -399,6 +695,27 @@ public class ISoccer {
         }
     } 
     
+    public static Partner findPartner(String name){
+        String nm;
+        Partner st = null;
+        int exit = 0;
+        for (Iterator<Partner> it = partners.iterator(); it.hasNext();) {
+            st = it.next();
+            nm = st.getName();
+            if(nm.equals(name)){
+                exit = 1;
+                break;
+            }
+        }
+        
+        if(exit == 1){
+            return st;
+        }
+        else{
+            return null;
+        }
+    }
+    
     public static Stadium findStadium(String name){
         String nm;
         Stadium st = null;
@@ -407,6 +724,48 @@ public class ISoccer {
             st = it.next();
             nm = st.getName();
             if(nm.equals(name)){
+                exit = 1;
+                break;
+            }
+        }
+        
+        if(exit == 1){
+            return st;
+        }
+        else{
+            return null;
+        }
+    }
+    
+    public static Bus findBus(int code){
+        int nm;
+        Bus st = null;
+        int exit = 0;
+        for (Iterator<Bus> it = buses.iterator(); it.hasNext();) {
+            st = it.next();
+            nm = st.getCode();
+            if(nm == code){
+                exit = 1;
+                break;
+            }
+        }
+        
+        if(exit == 1){
+            return st;
+        }
+        else{
+            return null;
+        }
+    }
+    
+    public static TrainingCenter findTrainingCenter(int code){
+        int nm;
+        TrainingCenter st = null;
+        int exit = 0;
+        for (Iterator<TrainingCenter> it = trainingCenters.iterator(); it.hasNext();) {
+            st = it.next();
+            nm = st.getCode();
+            if(nm == code){
                 exit = 1;
                 break;
             }
@@ -636,6 +995,23 @@ public class ISoccer {
         
         
     }
+    
+    public static void showReportsMenu(){
+        System.out.println("[+] Digite o NÚMERO correspondente a opção desejada:");
+        System.out.println("    [1] Geral");
+        System.out.println("    [2] Sobre os funcionários");
+        System.out.println("    [3] Sobre os recursos físicos");
+        System.out.println("    [4] Sobre os sócios torcedores");
+    }
+    
+    public static void showManagePartnersMenu(){
+        System.out.println("[+] Digite o NÚMERO correspondente a opção desejada:");
+        System.out.println("    [1] Adicionar sócio-torcedor");
+        System.out.println("    [2] Buscar dados de funcionário");
+        System.out.println("    [3] Alterar status de adimplência de sócio-torcedor");
+        System.out.println("    [4] Editar dados de sócio-torcedor");//TODO
+        System.out.println("    [0] Sair");
+    }
    
     public static void showManageResourcesMenu(){
         System.out.println("[+] Digite o NÚMERO correspondente a opção desejada:");
@@ -646,7 +1022,7 @@ public class ISoccer {
         System.out.println("    [5] Aumentar capacidade de estádio");
         System.out.println("    [6] Aumentar número de lanchonetes de estádio");
         System.out.println("    [7] Aumentar número de banheiros de estádio");
-        System.out.println("    [8] Alterar status de disponibilidade");//TODO
+        System.out.println("    [8] Alterar status de disponibilidade");
         System.out.println("    [0] Sair");
     }
     
@@ -669,15 +1045,16 @@ public class ISoccer {
         System.out.println("    [2] Remover funcionário");
         System.out.println("    [3] Buscar dados de funcionário");
         System.out.println("    [4] Alterar status de saúde de jogador");
+        System.out.println("    [5] Editar dados de funcionário");//TODO
         System.out.println("    [0] Sair");
     }
     
     public static void showMainMenu(){
         System.out.println("[+] Digite o NÚMERO correspondente a opção desejada:");
         System.out.println("    [1] Gerenciar funcionários");
-        System.out.println("    [2] Gerenciar recursos físicos");//TODO
+        System.out.println("    [2] Gerenciar recursos físicos");
         System.out.println("    [3] Gerenciar sócios-torcedores");//TODO
-        System.out.println("    [4] Relatórios");//TODO
+        System.out.println("    [4] Relatórios");
         System.out.println("    [0] Sair");
     }
     
