@@ -1,3 +1,4 @@
+
 ## Funcionalidades:
  1. **Gerenciar funcionários:**<br/>
 	 - Adicionar funcionários<br/>
@@ -131,3 +132,25 @@
 	- - Motivação: O sistema lê valores reais e caso o usuário digite algo diferente quando o sistema espera esse tipo, aparece um erro ao qual o usuário comum dificilmente irá entender.<br/>
 	- Solução: Criar um método de leitura para inteiros com tratamento de exceções.<br/>
 	- Vantagens: Com a utilização de métodos, caso seja necessário alterar o que é feito após capturar uma exceção ao ler floats, ao alterar este método, toda a leitura de floats do sistema está atualizada e uma mensagem amigável irá aparecer ao usuário caso ele não digite um float.<br/>
+
+## Extensibilidade<br/>
+
+1. **Novos tipos de funcionário** - Classe Employee<br/>
+	- Motivação: Novos tipos de funcionários podem surgir.<br/>
+	- Solução: Criação de uma classe para o tipo de pessoa que é empregado do clube, com dados como salário.<br/>
+	- Vantagens: A classe Employee tem todos os dados básicos e métodos básicos e permitirá que qualquer tipo de função possa ser adicionada ao sistema extendendo a essa classe.<br/>
+	
+2.**Novos tipos de pessoas** - Classe Person<br/>
+	- Motivação: Até o momento a classe Person se divide em Partner e Employee, mas pode ser necessária uma nova divisão da classe Person.<br/>
+	- Solução: A classe Person não tem dados que não sejam pertinentes a Partner e Employee ao mesmo tempo.<br/>
+	- Vantagens: Caso surja um tipo de pessoa que não faça parte desses dois tipos, será necessário que o sistema esteja preparado.<br/>
+3.**Novos tipos de sócio-torcedor** - Classe Partner<br/>
+	- Motivação: Pode ser necessário que cada tipo de sócio-torcedor tenha métodos específicos, como por exemplo para benefícios e ações no clube diferenciadas.<br/>
+	- Solução: Nesse caso, ao extender a classe Partner só tem dados que todos os tipos de sócio-torcedor terá.<br/>
+
+
+# Reuso<br/>
+
+1. **Métodos buscadores e de listagem:**<br/>
+- findEmployee(), findPlayer(), findPartner(), findStadium(), findBus(), findTrainingCenter(), listBuses(), listEmployees(), listPlayers(), listTrainingCenters(), listStadiums(), listPartners().<br/><br/>
+		- Motivação: Esses métodos são utilitários, e vários métodos precisaram utilizar. <br/>
