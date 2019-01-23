@@ -62,5 +62,21 @@
 	 - Desvantagens: Se não for preciso futuramente colocar métodos específicos de um motorista, a classe não tem diferença da classe Employee.<br/>
  9. **Lawyer** - Subclasse de Employee
 	 - Motivação: Caso seja necessário adicionar mais dados sobre os advogados e funções específicas, a classe está criada.<br/>
-	 -  Vantagens: Manutenção mais fácil após código ter sido desenvolvido com essa classe preparada.
+	 -  Vantagens: Manutenção mais fácil após código ter sido desenvolvido com essa classe preparada.<br/>
 	 - Desvantagens: Se não for preciso futuramente colocar métodos específicos de um advogado, a classe não tem diferença da classe Employee.<br/>
+ 10. **PersonalTrainer** - Subclasse de Employee<br/>
+	 -  Motivação: Caso seja necessário adicionar mais dados sobre os preparadores físicos e funções específicas, a classe está criada.<br/>
+	 -  Vantagens: Manutenção mais fácil após código ter sido desenvolvido com essa classe preparada.<br/>
+	 - Desvantagens: Se não for preciso futuramente colocar métodos específicos de um preparador físico, a classe não tem diferença da classe Employee.<br/>
+ 11. **President** - Subclasse de Employee<br/>
+	 -  Vantagens: Manutenção mais fácil após código ter sido desenvolvido com essa classe preparada.<br/>
+	 - Desvantagens: Se não for preciso futuramente colocar métodos específicos de um preparador físico, a classe não tem diferença da classe Employee.<br/>
+ 12. **Bus**<br/>
+		- Motivação: Necessidade de registrar a disponibilidade do ônibus.<br/>
+		- Vantagens: Futuramente pode-se acrescentar mais dados sobre os ônibus.<br/>
+ 13. **Stadium**
+		- Motivação: Registrar dados de capacidade, número de banheiros, número de lanchonetes.<br/>
+		- Vantagens: Funções específicas para lidar com esses dados, facilidade em acrescentar novas funções e informações.<br/>
+ 14. **TrainingCenter**
+		- Motivação: Registrar quantidade de dormitórios de cada CT.<br/>
+		- Vantagens: Funções específicas para lidar com esses dados, facilidade em acrescentar novas funções e informações.<br/>
