@@ -1007,7 +1007,7 @@ public class ISoccer {
     public static void showManagePartnersMenu(){
         System.out.println("[+] Digite o NÚMERO correspondente a opção desejada:");
         System.out.println("    [1] Adicionar sócio-torcedor");
-        System.out.println("    [2] Buscar dados de funcionário");
+        System.out.println("    [2] Buscar dados de sócio-torcedor");
         System.out.println("    [3] Alterar status de adimplência de sócio-torcedor");
         System.out.println("    [4] Editar dados de sócio-torcedor");//TODO
         System.out.println("    [0] Sair");
