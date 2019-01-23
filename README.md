@@ -1,30 +1,30 @@
 ## Funcionalidades:
  1. **Gerenciar funcionários:**<br/>
-				 - Adicionar funcionários<br/>
-				 - Remover funcionário<br/>
-				 - Buscar dados de um funcionário<br/>
-				 - Alterar status de saúde de um jogador<br/>
-				 - Editar dados de um funcionário (a ser implementado)<br/>
+	 - Adicionar funcionários<br/>
+	- Remover funcionário<br/>
+	- Buscar dados de um funcionário<br/>
+	- Alterar status de saúde de um jogador<br/>
+	- Editar dados de um funcionário (a ser implementado)<br/>
 			
  2. **Gerenciar recursos fisicos:**<br/>
-		 - Adicionar estádio<br/>
-		 - Adicionar centro de treinamento<br/>
-		 - Adicionar ônibus<br/>
-		 - Verificar dados de recursos<br/>
-		 - Aumentar capacidade de estádio<br/>
-		 - Aumentar número de lanchonetes no estádio<br/>
-		 - Aumentar número de banheiros no estádio<br/>
-		 - Alterar status de disponibilidade de um recurso<br/>
+	- Adicionar estádio<br/>
+	- Adicionar centro de treinamento<br/>
+	- Adicionar ônibus<br/>
+	- Verificar dados de recursos<br/>
+	 - Aumentar capacidade de estádio<br/>
+	 - Aumentar número de lanchonetes no estádio<br/>
+	 - Aumentar número de banheiros no estádio<br/>
+	 -   Alterar status de disponibilidade de um recurso<br/>
  3. **Gerenciar sócios-torcedores:**<br/>
-		 - Adicionar sócio-torcedor<br/>
-		 - Buscar dados de sócio-torcedor<br/>
-		 - Alterar status de adimplência de sócio-torcedor<br/>
-		 - Editar dados de sócio-torcedor (a ser implementado) <br/>
+	- Adicionar sócio-torcedor<br/>
+	 - Buscar dados de sócio-torcedor<br/>
+	 - Alterar status de adimplência de sócio-torcedor<br/>
+	- Editar dados de sócio-torcedor (a ser implementado) <br/>
  4. **Relatórios**<br/>
-		 - Gerar relatório geral<br/>
-		 - Gerar relatório sobre os funcionários<br/>
-		 - Gerar relatório sobre os recursos<br/>
-		 - Gerar relatório sobre os torcedores<br/>
+	 - Gerar relatório geral<br/>
+	 - Gerar relatório sobre os funcionários<br/>
+	 - Gerar relatório sobre os recursos<br/>
+	 - Gerar relatório sobre os torcedores<br/>
 
  
 
@@ -115,14 +115,19 @@
 	- Vantagens: Caso seja necessário alterar o que é feito após capturar uma exceção ao ler floats, ao alterar este método, toda a leitura de floats do sistema está atualizada. 
  
 
-## Herança
+## Herança<br/>
 
-- Motivação: Muitas classes tinham dados em comum e o sistema poderia ser expandido gerando mais classes com esses dados em comum e especificidades. Poderia ser necessário também que cada classe tivesse seu método exclusivo, que só fizesse sentido, como getCrm faz sentido para um médico, mas não para um treinador.
-- Solução: Criação da classe Person, superclasses para todas as classes que são referentes a pessoas, contendo dados básicos como nome, email, cpf e telefone. Após isso, a classe se divide em duas, para sócios-torcedores e empregados, sabendo que as únicas características em comum deles são as que estão presentes na classe Person. A classe Employee contém ainda outras subclasses, com cada tipo de empregado. 
-- Vantagens: As especificidades de cada função estão respeitadas. Se um dado só faz sentido para um tipo de funcionário, ou pessoa, só objetos dessa classe terão esse método. Apesar de algumas classes não estarem sendo bem utilizadas, caso venha a ser necessário, o sistema está pronto para receber novas funcionalidades.
-- Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos.
+- Motivação: Muitas classes tinham dados em comum e o sistema poderia ser expandido gerando mais classes com esses dados em comum e especificidades. Poderia ser necessário também que cada classe tivesse seu método exclusivo, que só fizesse sentido, como getCrm faz sentido para um médico, mas não para um treinador.<br/>
+- Solução: Criação da classe Person, superclasses para todas as classes que são referentes a pessoas, contendo dados básicos como nome, email, cpf e telefone. Após isso, a classe se divide em duas, para sócios-torcedores e empregados, sabendo que as únicas características em comum deles são as que estão presentes na classe Person. A classe Employee contém ainda outras subclasses, com cada tipo de empregado. <br/>
+- Vantagens: As especificidades de cada função estão respeitadas. Se um dado só faz sentido para um tipo de funcionário, ou pessoa, só objetos dessa classe terão esse método. Apesar de algumas classes não estarem sendo bem utilizadas, caso venha a ser necessário, o sistema está pronto para receber novas funcionalidades.<br/>
+- Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos.<br/>
 
-## Tratamento de Exceções
-- Motivação: Erros de digitação podem acontecer e o sistema precisa deixar claro qual foi o erro ocorrido, sem necessidade de conhecimento técnico de computação.
-- Solução: Métodos para os tipos de exceções possíveis. (readNumber() e readFloat())
-- Vantagens: Utilizando métodos, caso seja necessário alterar o que é feito após capturar uma exceção ao ler inteiros, ao alterar este método, toda a leitura de inteiros do sistema está atualizada.
+## Tratamento de Exceções<br/>
+1. **readNumber()** - Tratamento InputMismatchException<br/>
+	- Motivação: O sistema lê muitos inteiros e caso o usuário digite algo diferente quando o sistema espera esse tipo, aparece um erro ao qual o usuário comum dificilmente irá entender.<br/>
+	- Solução: Criar um método de leitura para inteiros com tratamento de exceções.<br/>
+	- Vantagens: Com a utilização de métodos, caso seja necessário alterar o que é feito após capturar uma exceção ao ler inteiros, ao alterar este método, toda a leitura de inteiros do sistema está atualizada e uma mensagem amigável irá aparecer ao usuário caso ele não digite um inteiro.<br/>
+2. **readFloat()** - Tratamento InputMismatchException<br/>
+	- - Motivação: O sistema lê valores reais e caso o usuário digite algo diferente quando o sistema espera esse tipo, aparece um erro ao qual o usuário comum dificilmente irá entender.<br/>
+	- Solução: Criar um método de leitura para inteiros com tratamento de exceções.<br/>
+	- Vantagens: Com a utilização de métodos, caso seja necessário alterar o que é feito após capturar uma exceção ao ler floats, ao alterar este método, toda a leitura de floats do sistema está atualizada e uma mensagem amigável irá aparecer ao usuário caso ele não digite um float.<br/>
