@@ -1,5 +1,4 @@
-
-
+# iSoccer
 ## Funcionalidades:
  1. **Gerenciar funcionários:**<br/>
 	 - Adicionar funcionários<br/>
@@ -121,10 +120,10 @@
 
 ![UML para o sistema iSoccer](https://i.imgur.com/OoJUA2o.png)
 
-  - Motivação: Devido a possíveis atualizações de cargos e estrutura funcional de times de futebol, tornou-se necessário estruturar o sistema de maneira que novos tipos de funcionários ou pessoas ligadas ao clube pudessem ser adicionadas ao sistema sem a necessidade de refazer grandes partes do sistema.<br/>
+  - Motivação: Devido a possíveis atualizações de cargos e estrutura funcional de times de futebol, tornou-se necessário estruturar o sistema de maneira que novos tipos de funcionários ou pessoas ligadas ao clube pudessem ser adicionadas ao sistema sem a necessidade de refazer grandes partes.<br/>
   - Solução: Criação de uma superclasse Person, que abrigaria os dois tipos de pessoas ligadas ao clube: empregados e torcedores.<br/>
   	Dentre os empregados, podem haver uma infinidade de funções além das observadas no período de desenvolvimento do sistema, logo a mesma motivação que levou a separação da classe Person, leva a separar a classe Employee em classes de tipo de funcionário.<br/>
-	Dentre os torcedores, inicialmente foi disposto somente o tipo sócio-torcedor, porém novas modalidades poderiam ser adicionadas em breve.<br/>
+	Dentre os torcedores, inicialmente foi necessário somente o tipo sócio-torcedor, porém novas modalidades poderiam ser adicionadas em breve.<br/>
   - Vantagens: Deste modo, a manutenção fica mais fácil e o surgimento de novas funções para o sistema também.<br/>
  - Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos. Como as classes PersonalTrainer, Lawyer, President, Coach e Cooker.<br/>
  
@@ -147,11 +146,12 @@
 	- Solução: Criação de uma classe para o tipo de pessoa que é empregado do clube, com dados como salário.<br/>
 	- Vantagens: A classe Employee tem todos os dados básicos e métodos básicos e permitirá que qualquer tipo de função possa ser adicionada ao sistema extendendo a essa classe.<br/>
 	
-2.**Novos tipos de pessoas** - Classe Person<br/>
+2. **Novos tipos de pessoas** - Classe Person<br/>
 	- Motivação: Até o momento a classe Person se divide em Partner e Employee, mas pode ser necessária uma nova divisão da classe Person.<br/>
 	- Solução: A classe Person não tem dados que não sejam pertinentes a Partner e Employee ao mesmo tempo.<br/>
 	- Vantagens: Caso surja um tipo de pessoa que não faça parte desses dois tipos, será necessário que o sistema esteja preparado.<br/>
-3.**Novos tipos de sócio-torcedor** - Classe Partner<br/>
+	
+3. **Novos tipos de sócio-torcedor** - Classe Partner<br/>
 	- Motivação: Pode ser necessário que cada tipo de sócio-torcedor tenha métodos específicos, como por exemplo para benefícios e ações no clube diferenciadas.<br/>
 	- Solução: Nesse caso, ao extender a classe Partner só tem dados que todos os tipos de sócio-torcedor terá.<br/>
 
@@ -160,4 +160,5 @@
 
 1. **Métodos buscadores e de listagem:**<br/>
 - findEmployee(), findPlayer(), findPartner(), findStadium(), findBus(), findTrainingCenter(), listBuses(), listEmployees(), listPlayers(), listTrainingCenters(), listStadiums(), listPartners().<br/><br/>
-		- Motivação: Esses métodos são utilitários, e vários métodos precisaram utilizar. <br/>
+	-  Motivação: Esses métodos são utilitários, e vários métodos precisaram utilizar. <br/>
+	-  Métodos do tipo buscadores (find) foram utilizados 11 vezes no código.<br/>
