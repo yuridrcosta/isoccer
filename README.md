@@ -102,11 +102,11 @@
 	- Vantagens: Está localizado na classe principal pois é o primeiro método a ser chamado pelo método main.<br/>
 5. **changeCompliance()**<br/>
 	- Motivação: Este método altera o status de adimplência de um sócio-torcedor a ser buscado pelo nome.<br/>
-	- Solução: Como o método não só busca nos registros, como obtém o nome do sócio-torcedor, colocamos na classe principal.<br/>
-	- Vantagens: Facilidade no acesso aos registros (ArrayLists), sem a necessidade de passar como parâmetro.<br/>
+	- Solução: Como o método não só busca nos registros, como obtém o nome do sócio-torcedor, colocamos na classe principal. Não foi colocado na classe Partner pois ainda seria necessário buscar o objeto nos registros (ArrayList), logo também necessitando de um método na classe ISoccer.<br/>
+	- Vantagens: Facilidade no acesso aos registros (ArrayLists), sem a necessidade de passar como parâmetro. <br/>
 6. **changeHealthyStatus()**<br/>
 	- Motivação: Este método altera o status de saúde de um jogador a ser buscado pelo nome.<br/>
-	- Solução: Como o método não só busca nos registros, como obtém o nome do jogador, colocamos na classe principal.<br/>
+	- Solução: Como o método não só busca nos registros, como obtém o nome do jogador, colocamos na classe principal. Não foi colocado na classe Player pois ainda seria necessário buscar o objeto nos registros (ArrayList), logo também necessitando de um método na classe ISoccer.<br/>
 	- Vantagens: Facilidade no acesso aos registros (ArrayLists), sem a necessidade de passar como parâmetro.<br/>
 7. **readNumber()**<br/>
 	- Motivação: Função que lê inteiros com tratamento de exceções.<br/>
@@ -156,7 +156,7 @@
 	- Solução: Nesse caso, ao extender a classe Partner só tem dados que todos os tipos de sócio-torcedor terá.<br/>
 
 
-# Reuso<br/>
+## Reuso<br/>
 
 1. **Métodos buscadores e de listagem:**<br/>
 - findEmployee(), findPlayer(), findPartner(), findStadium(), findBus(), findTrainingCenter(), listBuses(), listEmployees(), listPlayers(), listTrainingCenters(), listStadiums(), listPartners().<br/><br/>
