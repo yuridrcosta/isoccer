@@ -1,4 +1,5 @@
 
+
 ## Funcionalidades:
  1. **Gerenciar funcionários:**<br/>
 	 - Adicionar funcionários<br/>
@@ -118,10 +119,16 @@
 
 ## Herança<br/>
 
-	- Motivação: Muitas classes tinham dados em comum e o sistema poderia ser expandido gerando mais classes com esses dados em comum e especificidades. Poderia ser necessário também que cada classe tivesse seu método exclusivo, que só fizesse sentido, como getCrm faz sentido para um médico, mas não para um treinador.<br/>
-	- Solução: Criação da classe Person, superclasses para todas as classes que são referentes a pessoas, contendo dados básicos como nome, email, cpf e telefone. Após isso, a classe se divide em duas, para sócios-torcedores e empregados, sabendo que as únicas características em comum deles são as que estão presentes na classe Person. A classe Employee contém ainda outras subclasses, com cada tipo de empregado. <br/>
-	- Vantagens: As especificidades de cada função estão respeitadas. Se um dado só faz sentido para um tipo de funcionário, ou pessoa, só objetos dessa classe terão esse método. Apesar de algumas classes não estarem sendo bem utilizadas, caso venha a ser necessário, o sistema está pronto para receber novas funcionalidades.<br/>
-	- Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos.<br/>
+![UML para o sistema iSoccer](https://i.imgur.com/OoJUA2o.png)
+
+  - Motivação: Devido a possíveis atualizações de cargos e estrutura funcional de times de futebol, tornou-se necessário estruturar o sistema de maneira que novos tipos de funcionários ou pessoas ligadas ao clube pudessem ser adicionadas ao sistema sem a necessidade de refazer grandes partes do sistema.<br/>
+  - Solução: Criação de uma superclasse Person, que abrigaria os dois tipos de pessoas ligadas ao clube: empregados e torcedores.<br/>
+  	Dentre os empregados, podem haver uma infinidade de funções além das observadas no período de desenvolvimento do sistema, logo a mesma motivação que levou a separação da classe Person, leva a separar a classe Employee em classes de tipo de funcionário.<br/>
+	Dentre os torcedores, inicialmente foi disposto somente o tipo sócio-torcedor, porém novas modalidades poderiam ser adicionadas em breve.<br/>
+  - Vantagens: Deste modo, a manutenção fica mais fácil e o surgimento de novas funções para o sistema também.<br/>
+ - Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos. Como as classes PersonalTrainer, Lawyer, President, Coach e Cooker.<br/>
+ 
+ **Sobre as classes PersonalTrainer, Lawyer, President, Coach e Cooker:** Foram necessárias para uma melhor estruturação do sistema, permitindo que as funções desses funcionários sejam futuramente implementadas sem necessidade de refazer partes do código.
 
 ## Tratamento de Exceções<br/>
 1. **readNumber()** - Tratamento InputMismatchException<br/>
@@ -129,7 +136,7 @@
 	- Solução: Criar um método de leitura para inteiros com tratamento de exceções.<br/>
 	- Vantagens: Com a utilização de métodos, caso seja necessário alterar o que é feito após capturar uma exceção ao ler inteiros, ao alterar este método, toda a leitura de inteiros do sistema está atualizada e uma mensagem amigável irá aparecer ao usuário caso ele não digite um inteiro.<br/>
 2. **readFloat()** - Tratamento InputMismatchException<br/>
-	- - Motivação: O sistema lê valores reais e caso o usuário digite algo diferente quando o sistema espera esse tipo, aparece um erro ao qual o usuário comum dificilmente irá entender.<br/>
+	-  Motivação: O sistema lê valores reais e caso o usuário digite algo diferente quando o sistema espera esse tipo, aparece um erro ao qual o usuário comum dificilmente irá entender.<br/>
 	- Solução: Criar um método de leitura para inteiros com tratamento de exceções.<br/>
 	- Vantagens: Com a utilização de métodos, caso seja necessário alterar o que é feito após capturar uma exceção ao ler floats, ao alterar este método, toda a leitura de floats do sistema está atualizada e uma mensagem amigável irá aparecer ao usuário caso ele não digite um float.<br/>
 
