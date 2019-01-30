@@ -118,10 +118,10 @@
 
 ## Herança<br/>
 
-- Motivação: Muitas classes tinham dados em comum e o sistema poderia ser expandido gerando mais classes com esses dados em comum e especificidades. Poderia ser necessário também que cada classe tivesse seu método exclusivo, que só fizesse sentido, como getCrm faz sentido para um médico, mas não para um treinador.<br/>
-- Solução: Criação da classe Person, superclasses para todas as classes que são referentes a pessoas, contendo dados básicos como nome, email, cpf e telefone. Após isso, a classe se divide em duas, para sócios-torcedores e empregados, sabendo que as únicas características em comum deles são as que estão presentes na classe Person. A classe Employee contém ainda outras subclasses, com cada tipo de empregado. <br/>
-- Vantagens: As especificidades de cada função estão respeitadas. Se um dado só faz sentido para um tipo de funcionário, ou pessoa, só objetos dessa classe terão esse método. Apesar de algumas classes não estarem sendo bem utilizadas, caso venha a ser necessário, o sistema está pronto para receber novas funcionalidades.<br/>
-- Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos.<br/>
+	- Motivação: Muitas classes tinham dados em comum e o sistema poderia ser expandido gerando mais classes com esses dados em comum e especificidades. Poderia ser necessário também que cada classe tivesse seu método exclusivo, que só fizesse sentido, como getCrm faz sentido para um médico, mas não para um treinador.<br/>
+	- Solução: Criação da classe Person, superclasses para todas as classes que são referentes a pessoas, contendo dados básicos como nome, email, cpf e telefone. Após isso, a classe se divide em duas, para sócios-torcedores e empregados, sabendo que as únicas características em comum deles são as que estão presentes na classe Person. A classe Employee contém ainda outras subclasses, com cada tipo de empregado. <br/>
+	- Vantagens: As especificidades de cada função estão respeitadas. Se um dado só faz sentido para um tipo de funcionário, ou pessoa, só objetos dessa classe terão esse método. Apesar de algumas classes não estarem sendo bem utilizadas, caso venha a ser necessário, o sistema está pronto para receber novas funcionalidades.<br/>
+	- Desvantagem: Algumas classes não estão sendo bem utilizadas no momentos.<br/>
 
 ## Tratamento de Exceções<br/>
 1. **readNumber()** - Tratamento InputMismatchException<br/>
